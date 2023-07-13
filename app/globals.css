@@ -2,26 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "Menlo";
+  src: local("Menlo-Regular"), url(./assets/fonts/Menlo-Regular.ttf);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: "SF Pro Display";
+  src: local("SF-Pro-Display-Regular"),
+    url(./assets/fonts/SF-Pro-Display-Regular.otf);
+  font-weight: 100 400;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: local("SF-Pro-Display-Medium"),
+    url(./assets/fonts/SF-Pro-Display-Medium.otf);
+  font-weight: 500 600;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: local("SF-Pro-Display-Bold"), url(./assets/fonts/SF-Pro-Display-Bold.otf);
+  font-weight: 700 1000;
+}
+
+:root {
+  --dark-700: #191a21;
+  --dark-600: #21222c;
+  --dark-500: #282a36;
+  --dark-400: #3d4051;
+  --dark-300: #44475a;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #282a36;
+  color: #f8f8f2;
+}
+
+/* Scroll bar */
+/* Firefox */
+* {
+  scrollbar-color: rgba(256, 256, 256, 0.2) var(--dark-500);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 15px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--dark-500);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(256, 256, 256, 0.2);
+}
+
+/* Misc */
+::selection {
+  background: #505262;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-start 0s infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
